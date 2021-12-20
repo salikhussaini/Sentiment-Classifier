@@ -3,13 +3,15 @@
 ######################
 
 import pandas as pd
+import numpy as np
 import streamlit as st
+
 from  keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import tensorflow as tf
-import numpy as np
-
 import os
+
+
 ######################
 # Page Title
 ######################
@@ -57,9 +59,13 @@ def predict(sentence):
     answer = "## The emotion predicted is {}.".format(ans)
     return(answer)
 
-text_a = st.text_input('Input your sentance')
-if text_a != '':
-    text = predict(text_a)
-    st.write(text)
-else:
-    st.write("### You didn't type anything")
+def main():
+    text_a = st.text_input('Input your sentance')
+    if text_a != '':
+        text = predict(text_a)
+        st.write(text)
+    else:
+        st.write("### You didn't type anything")
+
+if __name__ == '__main__':
+    main()
